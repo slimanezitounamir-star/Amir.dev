@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amir.dev — ألعابي ومشاريعي</title>
+    <meta name="description" content="Amir.dev — أعمال وألعاب ومشاريع تطوير الألعاب.">
+
+    <style>
+        :root {
+            --bg: #070b14;
+            --panel: #0d1424;
+            --panel-2: #111b2f;
+            --text: #f4f7ff;
+            --muted: #a5ff55
+            --accent: #8fff00
+            --accent-2: #8fff00
+            --border: rgba(255,255,255,.09);
+        }
+
+        * { box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, "Segoe UI", Tahoma, Arial, sans-serif;
+            background:
+                radial-gradient(circle at 15% 10%, rgba(47,140,255,.18), transparent 30%),
+                radial-gradient(circle at 85% 25%, rgba(107,199,255,.10), transparent 28%),
+                var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        a { color: inherit; text-decoration: none; }
+
+        .container {
+            width: min(1120px, 92%);
+            margin: auto;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            backdrop-filter: blur(16px);
+            background: rgba(7,11,20,.78);
+            border-bottom: 1px solid var(--border);
+        }
+
+        nav {
+            min-height: 68px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 1.35rem;
+            font-weight: 900;
+            letter-spacing: .5px;
+        }
+
+        .logo span { color: var(--accent-2); }
+
+        .nav-links {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            padding: 8px 12px;
+            border-radius: 10px;
+            color: var(--muted);
+        }
+
+        .nav-links a:hover {
+            color: var(--text);
+            background: rgba(255,255,255,.06);
+        }
+
+        .hero {
+            min-height: 72vh;
+            display: grid;
+            place-items: center;
+            text-align: center;
+            padding: 80px 0 60px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border: 1px solid rgba(107,199,255,.25);
+            border-radius: 999px;
+            color: var(--accent-2);
+            background: rgba(47,140,255,.08);
+            font-size: .9rem;
+        }
+
+        h1 {
+            margin: 18px 0 10px;
+            font-size: clamp(2.5rem, 8vw, 5.5rem);
+            line-height: 1.05;
+        }
+
+        .gradient {
+            background: linear-gradient(90deg, #fff, var(--accent-2), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            max-width: 680px;
+            margin: 0 auto 28px;
+            color: var(--muted);
+            font-size: 1.08rem;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            background: var(--panel);
+            font-weight: 800;
+        }
+
+        .btn.primary {
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .btn:hover { transform: translateY(-2px); }
+
+        section { padding: 70px 0; }
+
+        .section-title {
+            margin-bottom: 28px;
+        }
+
+        .section-title h2 {
+            margin: 0 0 6px;
+            font-size: 2rem;
+        }
+
+        .section-title p {
+            margin: 0;
+            color: var(--muted);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .card {
+            padding: 22px;
+            background: linear-gradient(145deg, var(--panel-2), var(--panel));
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            box-shadow: 0 14px 40px rgba(0,0,0,.18);
+        }
+
+        .card .icon {
+            width: 48px;
+            height: 48px;
+            display: grid;
+            place-items: center;
+            border-radius: 14px;
+            background: rgba(47,140,255,.13);
+            color: var(--accent-2);
+            font-weight: 900;
+            margin-bottom: 16px;
+        }
+
+        .card h3 { margin: 0 0 7px; }
+
+        .card p {
+            color: var(--muted);
+            margin: 0 0 16px;
+        }
+
+        .card-link {
+            color: var(--accent-2);
+            font-weight: 800;
+        }
+
+        .about {
+            display: grid;
+            grid-template-columns: 1.2fr .8fr;
+            gap: 20px;
+        }
+
+        .about-box {
+            padding: 28px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .stat {
+            padding: 18px;
+            border-radius: 14px;
+            background: rgba(255,255,255,.04);
+        }
+
+        .stat strong {
+            display: block;
+            font-size: 1.7rem;
+            color: var(--accent-2);
+        }
+
+        footer {
+            padding: 30px 0;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+            text-align: center;
+        }
+
+        @media (max-width: 800px) {
+            .grid, .about { grid-template-columns: 1fr; }
+            nav { align-items: flex-start; padding: 12px 0; }
+            .nav-links { justify-content: flex-end; }
+            .hero { min-height: 65vh; }
+        }
+
+        @media (max-width: 520px) {
+            .nav-links a { padding: 6px 8px; font-size: .9rem; }
+            section { padding: 52px 0; }
+            .stats { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+
+<body>
+<header>
+    <div class="container">
+        <nav>
+            <a class="logo" href="#home">Amir<span>.dev</span></a>
+            <div class="nav-links">
+                <a href="#games">ألعابي</a>
+                <a href="#projects">مشاريعي</a>
+                <a href="#about">عن الموقع</a>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<main id="home">
+    <section class="hero">
+        <div class="container">
+            <span class="badge">Game Developer • Amir.dev</span>
+            <h1>أهلاً بك في <span class="gradient">Amir.dev</span></h1>
+            <p>
+                هنا أشارك أعمالي وألعابي ومشاريع تطوير الألعاب في مكان واحد.
+                هذا هو الإصدار الاحترافي الأول من الموقع.
+            </p>
+            <div class="buttons">
+                <a class="btn primary" href="#games">استكشف ألعابي</a>
+                <a class="btn" href="#projects">شاهد مشاريعي</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="games">
+        <div class="container">
+            <div class="section-title">
+                <h2>ألعابي</h2>
+                <p>الألعاب التي أعمل عليها وأطورها.</p>
+            </div>
+
+            <div class="grid">
+                <article class="card">
+                    <div class="icon">3D</div>
+                    <h3>3D Speed Game</h3>
+                    <p>اللعبة حذفت بخطأ</p>
+                    <a class="card-link" href="https://amirsma95.itch.io/3d-speed-game" target="_blank" rel="noopener">
+                        فتح صفحة اللعبة ←
+                    </a>
+                </article>
+
+                <article class="card">
+                    <div class="icon">G</div>
+                    <h3>غامض</h3>
+                    <p>في هذا الوقت يتم العمل على الموقع بعد تحسينه يتم نشر الألعاب</p>
+                    <a class="card-link" href="#projects">عرض المشاريع ←</a>
+                </article>
+
+                <article class="card">
+                    <div class="icon">+</div>
+                 <h3>غامض</h3>
+                    <p> إنتظروا الألعاب مع الإشعار</p>
+                    <a class="card-link" href="#about">عن Amir.dev ←</a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <div class="section-title">
+                <h2>مشاريعي</h2>
+                <p>أعمال وتجارب في تطوير الألعاب والويب.</p>
+            </div>
+
+            <div class="grid">
+                <article class="card">
+                    <div class="icon">GD</div>
+                    <h3>Godot</h3>
+                    <p>تطوير الإلعاب باستخدام Godot 4.7.2</p>
+                </article>
+
+                <article class="card">
+                    <div class="icon">WEB</div>
+                    <h3>Web</h3>
+                    <p>بناء صفحات ومواقع باستخدام HTML وCSS وJavaScript.</p>
+                </article>
+
+                <article class="card">
+                    <div class="icon">DEV</div>
+                    <h3>تجارب جديدة</h3>
+                    <p>هذا القسم مخصص للمشاريع القادمة والأفكار التي ستتحول إلى ألعاب.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <div class="about">
+                <div class="about-box">
+                    <div class="section-title">
+                        <h2>عن Amir.dev</h2>
+                    </div>
+                    <p>
+                        Amir.dev هو الموقع الشخصي لعرض الأعمال والألعاب والمشاريع.
+                        تم تصميم هذه النسخة لتكون سريعة، متجاوبة، ومناسبة للهاتف والتابلت.
+                    </p>
+                    <a class="btn primary" href="#home">العودة إلى الأعلى</a>
+                </div>
+
+                <div class="about-box">
+                    <div class="stats">
+                        <div class="stat">
+                            <strong>01</strong>
+                            نسخة الموقع
+                        </div>
+                        <div class="stat">
+                            <strong>3D</strong>
+                            نوع لعبة مميزة
+                        </div>
+                        <div class="stat">
+                            <strong>HTML</strong>
+                            أساس الموقع
+                        </div>
+                        <div class="stat">
+                            <strong>∞</strong>
+                            مشاريع قابلة للإضافة
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+
+<footer>
+    <div class="container">
+        © 2026 Amir.dev — جميع الحقوق محفوظة
+    </div>
+</footer>
+</body>
+</html>
